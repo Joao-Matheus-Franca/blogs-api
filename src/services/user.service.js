@@ -10,6 +10,11 @@ const getAllWithoutPassword = async () => {
   return users;
 };
 
+const getOneUser = async (id) => {
+  const user = await User.findByPk(id);
+  return user; 
+};
+
 const insertNewUser = async (displayName, email, password) => {
   const user = await User.create({ displayName, email, password });
   return user;
@@ -18,5 +23,6 @@ const insertNewUser = async (displayName, email, password) => {
 module.exports = { 
   getAllUsers, 
   getAllWithoutPassword,
+  getOneUser,
   insertNewUser,
 };

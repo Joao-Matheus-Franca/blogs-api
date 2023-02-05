@@ -14,6 +14,8 @@ app.post('/user', validateLogin.validateNewUsers);
 
 app.get('/user', validateToken, validateLogin.showAllUsers);
 
+app.get('/user/:id', validateToken, validateLogin.findById);
+
 module.exports = app;
 
 // João Matheus Silva Franca

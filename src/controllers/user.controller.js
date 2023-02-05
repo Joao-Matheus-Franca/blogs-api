@@ -69,8 +69,19 @@ const showAllUsers = async (req, res) => {
   return res.status(200).json(users);
 };
 
+const findById = async (req, res) => {
+  const { params: { id } } = req;
+  const user = await userService.getOneUser(id);
+  if (!user) {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+  return res.status(200)
+    .json({ id: user.id, displayName: user.displayName, email: user.email, image: user.image });
+};
+
 module.exports = {
   validateUsers,
   validateNewUsers,
   showAllUsers,
+  findById,
 };
