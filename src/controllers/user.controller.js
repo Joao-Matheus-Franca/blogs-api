@@ -64,7 +64,13 @@ const validateNewUsers = async (req, res) => {
   return res.status(201).json({ token });
 };
 
+const showAllUsers = async (req, res) => {
+  const users = await userService.getAllWithoutPassword();
+  return res.status(200).json(users);
+};
+
 module.exports = {
   validateUsers,
   validateNewUsers,
+  showAllUsers,
 };

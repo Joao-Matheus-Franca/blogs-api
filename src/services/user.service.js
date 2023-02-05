@@ -5,6 +5,11 @@ const getAllUsers = async () => {
   return users;
 };
 
+const getAllWithoutPassword = async () => {
+  const users = await User.findAll({ attributes: ['id', 'displayName', 'email', 'image'] });
+  return users;
+};
+
 const insertNewUser = async (displayName, email, password) => {
   const user = await User.create({ displayName, email, password });
   return user;
@@ -12,5 +17,6 @@ const insertNewUser = async (displayName, email, password) => {
 
 module.exports = { 
   getAllUsers, 
+  getAllWithoutPassword,
   insertNewUser,
 };
