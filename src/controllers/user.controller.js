@@ -38,7 +38,9 @@ const validateUsers = async (req, res) => {
     return res.status(400).json({ message: 'Invalid fields' });
   }
 
-  const token = jwt.sign({ data: { email } }, secretKey, tokenConfig);
+  const { id } = users.find((u) => u.email === email);
+
+  const token = jwt.sign({ data: { id, email } }, secretKey, tokenConfig);
 
   return res.status(200).json({ token });
 };
