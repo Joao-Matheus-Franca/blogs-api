@@ -19,6 +19,8 @@ app.get('/user/:id', validateToken, validateLogin.findById);
 
 app.post('/categories', validateToken, validateCategories.validateNewCategory);
 
+app.get('/categories', validateToken, validateCategories.showAllCategories);
+
 module.exports = app;
 
 // João Matheus Silva Franca
